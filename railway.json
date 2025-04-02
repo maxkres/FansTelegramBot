@@ -1,15 +1,12 @@
 {
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "pip install -r requirements.txt && python -m pip install --upgrade pip"
+    "buildCommand": "pip install --user -r requirements.txt"
   },
   "deploy": {
-    "startCommand": "uvicorn server.app.main:app --host 0.0.0.0 --port ${PORT:-8080}",
+    "startCommand": "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}",
     "ports": {
-      "web": {
-        "port": 8080,
-        "protocol": "https"
-      }
+      "web": 8000
     }
   }
 }
